@@ -1,0 +1,31 @@
+# since don't use a default MAKE filename, execute via:
+# make -f makeperc
+###
+# set variables:
+#
+CXX=g++ -Wall
+#INCLUDES=-I/home/myoder/Documents/Source -I/home/myoder/Documents/gnuplot_i++
+INCLUDES=-I/home/myoder/Documents/Source
+#LDFLAGS=-L/usr/libs
+LIBS=-L/usr/libs
+CXXFLAGS=$(INCLUDES) 
+
+all: iperc1
+
+iperc1.o: iperc1.cpp site.o lattice.o
+	$(CXX) iperc1.cpp site.o lattice.o -c
+
+site.o: site.cpp site.h
+	$(CXX) $(FLAGS) site.cpp -c
+
+lattice.o: lattice.cpp lattice.h
+	$(CXX) $(FLAGS) lattice.cpp -c
+	
+cluster.o: cluster.cpp cluster.h
+	$(CXX) $(FLAGS) cluster.cpp -c
+
+iperc1: iperc1.o site.o lattice.o cluster.o
+	$(CXX) iperc1.o site.o lattice.o cluster.o -o iperc1 $(LIBS) $(INCLUDES)
+
+
+
