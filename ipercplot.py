@@ -172,6 +172,8 @@ def RBclusters(zs=None, L=1024, geom=0, dla=1, fnum=0, xscale='linear', yscale='
 	axdn.plot(X2, allzs2, '.-')
 	
 def getNTWzs(fname='synthcats/rundleNTW.dat'):
+	# get NTW data (Rundle et al. 2011,2012). convert these into an i-perc catalog of z-values (strengths) for comparison to
+	# synthetic data.
 	f=open(fname)
 	t=[]
 	zs=[]
